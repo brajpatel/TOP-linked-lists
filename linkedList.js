@@ -156,5 +156,24 @@ class LinkedList {
         return node;
     }
     
-    removeAt(index) {}
+    removeAt(index) {
+        if(index >= this.size()) return null;
+        if(index === this.size() - 1) this.pop();
+
+        let currentIndex = 0;
+        let current = this.head;
+        let nodeToRemove;
+        let beforeNodeToRemove;
+
+        while(currentIndex !== index) {
+            beforeNodeToRemove = nodeToRemove;
+            nodeToRemove = current;
+            current = current.next;
+            currentIndex++;
+        }
+
+        beforeNodeToRemove.next = current;
+
+        return beforeNodeToRemove;
+    }
 }
