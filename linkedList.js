@@ -38,9 +38,11 @@ class LinkedList {
         return size;
     }
 
-    append() {}
+    append(value) {
+        
+    }
 
-    prepend() {}
+    prepend(value) {}
 
     at(index) {}
     
@@ -52,7 +54,7 @@ class LinkedList {
 
     toString() {}
 
-    insertAt() {}
+    insertAt(value, index) {}
     
-    removeAt() {}
+    removeAt(index) {}
 }
