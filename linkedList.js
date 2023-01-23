@@ -11,7 +11,7 @@ class LinkedList {
     }
 
     head() {
-        // return this.head;
+        return this.head;
     }
 
     tail() {
