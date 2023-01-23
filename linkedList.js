@@ -51,11 +51,49 @@ class LinkedList {
         return tail;
     }
 
-    prepend(value) {}
+    prepend(value) {
+        let node = new Node(value);
 
-    at(index) {}
+        if(!this.head) {
+            this.head = node;
+            return this;
+        }
+
+        node.next = this.head;
+        this.head = node;
+
+        return this.head;
+    }
+
+    at(index) {
+        // if(index >= this.size()) return null;
+
+        // let currentIndex = 0;
+        // let currentNode = this.head;
+
+        // while(currentIndex !== index) {
+        //     currentNode = currentNode.next;
+        //     currentIndex++;
+        // }
+
+        // return currentNode;
+    }
     
-    pop() {}
+    pop() {
+        // if(!this.size()) return null;
+
+        // let current = this.head;
+        // let secondToLast;
+
+        // while(current !== null) {
+        //     secondToLast = current;
+        //     current = current.next;
+        // }
+
+        // secondToLast.next = null;
+
+        // return secondToLast;
+    }
 
     contains(value) {}
 
