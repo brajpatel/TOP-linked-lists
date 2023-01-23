@@ -39,7 +39,16 @@ class LinkedList {
     }
 
     append(value) {
-        
+        let node = new Node(value);
+
+        if(!this.head) {
+            this.head = node;
+            return this;
+        }
+
+        let tail = this.tail;
+        tail.next = node;
+        return tail;
     }
 
     prepend(value) {}
