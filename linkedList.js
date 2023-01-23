@@ -69,14 +69,14 @@ class LinkedList {
         if(index >= this.size()) return null;
 
         let currentIndex = 0;
-        let currentNode = this.head;
+        let current = this.head;
 
         while(currentIndex !== index) {
-            currentNode = currentNode.next;
+            current = current.next;
             currentIndex++;
         }
 
-        return currentNode;
+        return current;
     }
     
     pop() {
@@ -136,7 +136,25 @@ class LinkedList {
         return string + null;
     }
 
-    insertAt(value, index) {}
+    insertAt(value, index) {
+        if(index >= this.size()) return null;
+
+        let currentIndex = 0;
+        let current = this.head;
+        let secondToLast;
+
+        while(currentIndex !== index) {
+            secondToLast = current;
+            current = current.next;
+            currentIndex++;
+        }
+
+        let node = new Node(value);
+        secondToLast.next = node;
+        node.next = current;
+        
+        return node;
+    }
     
     removeAt(index) {}
 }
