@@ -80,19 +80,19 @@ class LinkedList {
     }
     
     pop() {
-        // if(!this.size()) return null;
+        if(!this.size()) return null;
 
-        // let current = this.head;
-        // let secondToLast;
+        let current = this.head;
+        let secondToLast;
 
-        // while(current !== null) {
-        //     secondToLast = current;
-        //     current = current.next;
-        // }
+        while(current !== null) {
+            secondToLast = current;
+            current = current.next;
+        }
 
-        // secondToLast.next = null;
+        secondToLast.next = null;
 
-        // return secondToLast;
+        return secondToLast;
     }
 
     contains(value) {}
