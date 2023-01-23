@@ -1,179 +1,182 @@
 class Node {
-    constructor(data, next = null) {
-        this.data = data;
-        this.next = next;
-    }
+	constructor(data, next = null) {
+		this.data = data;
+		this.next = next;
+	}
 }
 
 class LinkedList {
-    constructor() {
-        this.head = null;
-    }
+	constructor() {
+		this.head = null;
+	}
 
-    head() {
-        return this.head;
-    }
+	head() {
+		return this.head;
+	}
 
-    tail() {
-        if(!this.head) return null;
+	tail() {
+		if(!this.head) return null;
+		
+		let tail = this.head;
 
-        let tail = this.head;
-        
-        while(tail !== null) {
-            tail = tail.next;
-        }
+		while(tail.next !== null) {
+			tail = tail.next;
+		}
 
-        return tail;
-    }
+		return tail;
+	}
 
-    size() {
-        let size = 0;
-        let current = this.head;
+	size() {
+		let size = 0;
+		let current = this.head;
 
-        while(current !== null) {
-            current = current.next;
-            size++
-        }
+		while(current !== null) {
+			current = current.next;
+			size++;
+		}
 
-        return size;
-    }
+		return size;
+	}
 
-    append(value) {
-        let node = new Node(value);
+	append(value) {
+		let node = new Node(value);
 
-        if(!this.head) {
-            this.head = node;
-            return this;
-        }
+		if(!this.head) {
+			this.head = node;
+			return this;
+		}
 
-        let tail = this.tail;
-        tail.next = node;
-        return tail;
-    }
+		let tail = this.tail();
+		tail.next = node;
+		return tail;
+	}
 
-    prepend(value) {
-        let node = new Node(value);
+	prepend(value) {
+		let node = new Node(value);
 
-        if(!this.head) {
-            this.head = node;
-            return this;
-        }
+		if(!this.head) {
+			this.head = node;
+			return this;
+		}
+		
+		node.next = this.head;
+		this.head = node;
 
-        node.next = this.head;
-        this.head = node;
+		return this.head;
+	}
 
-        return this.head;
-    }
+	at(index) {
+		if(index >= this.size()) return null;
+		
+		let currentIndex = 0;
+		let current = this.head;
 
-    at(index) {
-        if(index >= this.size()) return null;
+		while(currentIndex !== index) {
+			current = current.next;
+			currentIndex++;
+		}
 
-        let currentIndex = 0;
-        let current = this.head;
+		return current;
+	}
 
-        while(currentIndex !== index) {
-            current = current.next;
-            currentIndex++;
-        }
+	pop() {
+		if(this.size() - 1 <= 0) return null;
 
-        return current;
-    }
-    
-    pop() {
-        if(this.size() - 1 <= 0) return null;
+		let current = this.head;
+		let secondToLast;
 
-        let current = this.head;
-        let secondToLast;
+		while(current.next !== null) {
+			secondToLast = current;
+			current = current.next;
+		}
 
-        while(current !== null) {
-            secondToLast = current;
-            current = current.next;
-        }
+		secondToLast.next = null;
 
-        secondToLast.next = null;
+		return current;
+	}
 
-        return secondToLast;
-    }
+	contains(value) {
+		if(!this.size()) return null;
 
-    contains(value) {
-        if(!this.size()) return null;
+		let current = this.head;
 
-        let current = this.head;
+		while(current.data !== value) {
+			current = current.next;
+			
+			if(current === null) return false;
+		}
 
-        while(current.data !== value) {
-            current = current.next;
+		return true;
+	}
 
-            if(current === null) return false;
-        }
+	find(value) {
+		if(!this.size()) return null;
 
-        return true;
-    }
+		let index = 0;
+		let current = this.head;
 
-    find(value) {
-        if(!this.size()) return null;
+		while(current.data !== value) {
+			current = current.next;
+			index++;
+			
+			if(current === null) return null;
+		}
+		return index;
+	}
 
-        let index = 0;
-        let current = this.head;
+	toString() {
+		let size = this.size()
+		let string = '';
 
-        while(current.data !== value) {
-            current = current.next;
-            index++;
+		for(let i = 0; i < size; i++) {
+			string += this.at(i).data.toString() + ' -> ';
+		}
 
-            if(current === null) return null;
-        }
+		return string + 'null';
+	}
 
-        return index;
-    }
+	// EXTRA FUNCTIONS
+	insertAt(value, index) {
+		if(index >= this.size()) return null;
+		if(index === this.size() - 1) return this.append(value);
+		if(index === 0) return this.prepend(value);
 
-    toString() {
-        let size = this.size();
-        let string = '';
+		let currentIndex = 0;
+		let current = this.head;
+		let secondToCurrent;
 
-        for(let i = 0; i < size; i++) {
-            string += this.at(i).toString() + ' -> ';
-        }
+		while(currentIndex !== index) {
+			secondToCurrent = current;
+			current = current.next;
 
-        return string + null;
-    }
+			currentIndex++;
+		}
+	
+		let node = new Node(value);
+		secondToCurrent.next = node;
+		node.next = current;
 
-    insertAt(value, index) {
-        if(index >= this.size()) return null;
+		return node;
+	}
 
-        let currentIndex = 0;
-        let current = this.head;
-        let secondToLast;
+	removeAt(index) {
+		if(index >= this.size()) return null;
+		if(index === this.size() - 1) this.pop();
 
-        while(currentIndex !== index) {
-            secondToLast = current;
-            current = current.next;
-            currentIndex++;
-        }
+		let currentIndex = 0;
+		let current = this.head;
+		let nodeToRemove;
+		let beforeNodeToRemove;
 
-        let node = new Node(value);
-        secondToLast.next = node;
-        node.next = current;
-        
-        return node;
-    }
-    
-    removeAt(index) {
-        if(index >= this.size()) return null;
-        if(index === this.size() - 1) this.pop();
+		while(currentIndex !== index + 1) {
+			beforeNodeToRemove = nodeToRemove;
+			nodeToRemove = current;
+			current = current.next;
+			currentIndex++
+		}
 
-        let currentIndex = 0;
-        let current = this.head;
-        let nodeToRemove;
-        let beforeNodeToRemove;
+		beforeNodeToRemove.next = current;
 
-        while(currentIndex !== index) {
-            beforeNodeToRemove = nodeToRemove;
-            nodeToRemove = current;
-            current = current.next;
-            currentIndex++;
-        }
-
-        beforeNodeToRemove.next = current;
-
-        return beforeNodeToRemove;
-    }
+		return beforeNodeToRemove;
+	}
 }
