@@ -27,15 +27,15 @@ class LinkedList {
     }
 
     size() {
-        // let size = 0;
-        // let current = this.head;
+        let size = 0;
+        let current = this.head;
 
-        // while(current !== null) {
-        //     current = current.next;
-        //     size++
-        // }
+        while(current !== null) {
+            current = current.next;
+            size++
+        }
 
-        // return size;
+        return size;
     }
 
     append() {}
