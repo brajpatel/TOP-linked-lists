@@ -180,3 +180,38 @@ class LinkedList {
 		return beforeNodeToRemove;
 	}
 }
+
+const linkedList = new LinkedList();
+
+console.log(linkedList.size()); // returns 0 - no nodes in list
+linkedList.append(20);
+linkedList.append(30);
+linkedList.append(40);
+linkedList.append(50);
+linkedList.append(60);
+linkedList.append(99999);
+linkedList.pop();
+console.log(linkedList.size()); // returns 5 - appended 6 nodes, popped 1 off
+console.log(linkedList.head); // Node {data:20, next: Node}
+console.log(linkedList.tail()); // Node {data: 60, next: Node}
+console.log(linkedList.at(1)); // Node {data: 30, next: Node}
+console.log(linkedList.contains(20)); // true
+console.log(linkedList.contains(25)); // false
+console.log(linkedList.find(40)); // 2
+console.log(linkedList.find(45)); // null
+console.log(linkedList.toString()); // 20 -> 30 -> 40 -> 50 -> 60 -> null
+linkedList.prepend(10);
+console.log(linkedList.toString()); // 10 -> 20 -> 30 -> 40 -> 50 -> 60 -> null
+console.log(linkedList.find(40)); // 3
+console.log(linkedList.contains(60)) // true
+linkedList.pop();
+console.log(linkedList.contains(60)); // false
+console.log(linkedList.toString()); // 10 -> 20 -> 30 -> 40 -> 50 -> null
+console.log(linkedList.contains(35)); // false
+linkedList.insertAt(35, 3);
+console.log(linkedList.contains(35)); // true
+console.log(linkedList.toString()); // 10 -> 20 -> 30 -> 35 -> 40 -> 50 -> null
+console.log(linkedList.contains(40)); // true
+linkedList.removeAt(4);
+console.log(linkedList.contains(40)); // false
+console.log(linkedList.toString()); // 10 -> 20 -> 30 -> 35 -> 50 -> null
