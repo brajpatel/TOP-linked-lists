@@ -15,15 +15,15 @@ class LinkedList {
     }
 
     tail() {
-        // if(!this.head) return null;
+        if(!this.head) return null;
 
-        // let tail = this.head;
+        let tail = this.head;
         
-        // while(tail !== null) {
-        //     tail = tail.next;
-        // }
+        while(tail !== null) {
+            tail = tail.next;
+        }
 
-        // return tail;
+        return tail;
     }
 
     size() {
