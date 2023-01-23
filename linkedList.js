@@ -80,7 +80,7 @@ class LinkedList {
     }
     
     pop() {
-        if(!this.size()) return null;
+        if(this.size() - 1 <= 0) return null;
 
         let current = this.head;
         let secondToLast;
@@ -96,7 +96,17 @@ class LinkedList {
     }
 
     contains(value) {
-        // if(!this.size()) return null;
+        if(!this.size()) return null;
+
+        let current = this.head;
+
+        while(current.data !== value) {
+            current = current.next;
+
+            if(current === null) return false;
+        }
+
+        return true;
     }
 
     find(value) {
