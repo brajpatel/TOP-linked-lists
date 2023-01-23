@@ -100,19 +100,19 @@ class LinkedList {
     }
 
     find(value) {
-        // if(!this.size()) return null;
+        if(!this.size()) return null;
 
-        // let index = 0;
-        // let current = this.head;
+        let index = 0;
+        let current = this.head;
 
-        // while(current.data !== value) {
-        //     current = current.next;
-        //     index++;
+        while(current.data !== value) {
+            current = current.next;
+            index++;
 
-        //     if(current === null) return null;
-        // }
+            if(current === null) return null;
+        }
 
-        // return index;
+        return index;
     }
 
     toString() {
