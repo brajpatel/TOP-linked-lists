@@ -95,11 +95,36 @@ class LinkedList {
         return secondToLast;
     }
 
-    contains(value) {}
+    contains(value) {
+        // if(!this.size()) return null;
+    }
 
-    find(value) {}
+    find(value) {
+        // if(!this.size()) return null;
 
-    toString() {}
+        // let index = 0;
+        // let current = this.head;
+
+        // while(current.data !== value) {
+        //     current = current.next;
+        //     index++;
+
+        //     if(current === null) return null;
+        // }
+
+        // return index;
+    }
+
+    toString() {
+        let size = this.size();
+        let string = '';
+
+        for(let i = 0; i < size; i++) {
+            string += this.at(i).toString() + ' -> ';
+        }
+
+        return string + null;
+    }
 
     insertAt(value, index) {}
     
