@@ -66,17 +66,17 @@ class LinkedList {
     }
 
     at(index) {
-        // if(index >= this.size()) return null;
+        if(index >= this.size()) return null;
 
-        // let currentIndex = 0;
-        // let currentNode = this.head;
+        let currentIndex = 0;
+        let currentNode = this.head;
 
-        // while(currentIndex !== index) {
-        //     currentNode = currentNode.next;
-        //     currentIndex++;
-        // }
+        while(currentIndex !== index) {
+            currentNode = currentNode.next;
+            currentIndex++;
+        }
 
-        // return currentNode;
+        return currentNode;
     }
     
     pop() {
